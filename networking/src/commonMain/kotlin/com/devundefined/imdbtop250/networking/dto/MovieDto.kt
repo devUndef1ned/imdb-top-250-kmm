@@ -1,4 +1,4 @@
-package com.devundefined.networking.imdbtop250.dto
+package com.devundefined.imdbtop250.networking.dto
 
 import kotlinx.serialization.Serializable
 

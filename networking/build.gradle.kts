@@ -34,6 +34,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
+                implementation("io.ktor:ktor-client-mock:$ktorVersion")
             }
         }
         val androidMain by getting {
@@ -45,6 +46,7 @@ kotlin {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation("junit:junit:4.13.2")
+                implementation("io.ktor:ktor-client-mock-jvm:$ktorVersion")
             }
         }
         val iosX64Main by getting
@@ -67,6 +69,9 @@ kotlin {
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
             //iosSimulatorArm64Test.dependsOn(this)
+            dependencies {
+                implementation("io.ktor:ktor-client-mock:$ktorVersion")
+            }
         }
     }
 }
