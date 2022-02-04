@@ -9,3 +9,5 @@ pluginManagement {
 rootProject.name = "IMDB_top_250"
 include(":androidApp")
 include(":shared")
+include(":networking")
+include(":domain")
