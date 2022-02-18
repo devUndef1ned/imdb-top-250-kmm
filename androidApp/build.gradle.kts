@@ -1,13 +1,25 @@
+import Constants.composeVersion
+
 plugins {
     id("com.android.application")
     kotlin("android")
+    id("dagger.hilt.android.plugin")
+    kotlin("kapt")
 }
 
 android {
+    composeOptions {
+        kotlinCompilerExtensionVersion = composeVersion
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
     compileSdk = 31
     defaultConfig {
         applicationId = "com.devundefined.imdbtop250.android"
-        minSdk = 21
+        minSdk = 27
         targetSdk = 31
         versionCode = 1
         versionName = "1.0"
@@ -19,9 +31,23 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
-    implementation(project(":shared"))
-    implementation("com.google.android.material:material:1.5.0")
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    val lifecycleVersion = "2.4.1"
+
+    implementation(project(":domain"))
+    implementation(project(":networking"))
+
+    implementation("androidx.compose.ui:ui:$composeVersion")
+    implementation("androidx.compose.material:material:$composeVersion")
+    implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("com.google.dagger:hilt-android:${Constants.hiltVersion}")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    kapt("com.google.dagger:hilt-compiler:${Constants.hiltVersion}")
 }

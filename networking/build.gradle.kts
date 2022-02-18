@@ -41,6 +41,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
+                implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
             }
         }
         val androidTest by getting {

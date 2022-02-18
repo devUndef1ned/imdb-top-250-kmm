@@ -1,6 +1,6 @@
 package com.devundefined.imdbtop250.networking
 
-import com.devundefined.imdbtop250.Error
+import com.devundefined.imdbtop250.core.Error
 import com.devundefined.imdbtop250.domain.Movie
 import com.devundefined.imdbtop250.monad.Either
 import com.devundefined.imdbtop250.monad.map
@@ -16,7 +16,7 @@ class NetworkDataSource(private val apiClient: ApiClient) {
             Either.left(Error(response.errorMessage))
         }
     }
-    suspend fun getTop250(): Either<Error, Collection<Movie>> {
+    suspend fun getTop250(): Either<Error, List<Movie>> {
         return load().map { list -> list.map(Mapper::invoke) }
     }
 }

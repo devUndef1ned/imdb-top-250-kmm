@@ -15,3 +15,17 @@ fun <A : Any, B : Any, C : Any> Either<A, B>.map(mapFun: (B) -> C): Either<A, C>
     is Left -> Either.left(this.left)
     is Right -> Either.right(mapFun(this.right))
 }
+
+fun <A : Any, B : Any> Either<A, B>.onLeft(leftSideEffect: (A) -> Unit): Either<A, B> = apply {
+    when(this) {
+        is Left -> leftSideEffect(left)
+        is Right -> Unit
+    }
+}
+
+fun <A : Any, B : Any> Either<A, B>.onRight(rightSideEffect: (B) -> Unit): Either<A, B> = apply {
+    when(this) {
+        is Left -> Unit
+        is Right -> rightSideEffect(right)
+    }
+}

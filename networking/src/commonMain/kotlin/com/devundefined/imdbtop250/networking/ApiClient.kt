@@ -4,14 +4,26 @@ import com.devundefined.imdbtop250.networking.dto.MovieCollectionDto
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.*
+import io.ktor.client.engine.cio.*
 import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.serialization.kotlinx.json.*
 
-class ApiClient(engine: HttpClientEngine) {
-    private val client = HttpClient(engine) {
-        install(ContentNegotiation) {
-            json()
+class ApiClient(){
+    private var client: HttpClient
+
+    init {
+        client = HttpClient(CIO) {
+            install(ContentNegotiation) {
+                json()
+            }
+        }
+    }
+    internal constructor(engine: HttpClientEngine) : this() {
+        client = HttpClient(engine) {
+            install(ContentNegotiation) {
+                json()
+            }
         }
     }
 
