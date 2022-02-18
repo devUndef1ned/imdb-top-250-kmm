@@ -1,7 +1,6 @@
 package com.devundefined.imdbtop250.networking
 
 import com.devundefined.imdbtop250.networking.dto.MovieCollectionDto
-import com.devundefined.imdbtop250.networking.dto.MovieDto
 import io.ktor.client.*
 import io.ktor.client.call.*
 import io.ktor.client.engine.*
