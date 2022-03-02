@@ -44,10 +44,13 @@ dependencies {
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
+    debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.activity:activity-compose:1.4.0")
     implementation("com.google.dagger:hilt-android:${Constants.hiltVersion}")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     kapt("com.google.dagger:hilt-compiler:${Constants.hiltVersion}")
+
+    implementation("io.coil-kt:coil-compose:1.4.0")
 }
