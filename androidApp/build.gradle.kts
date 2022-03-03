@@ -1,4 +1,5 @@
 import Constants.composeVersion
+import Constants.hiltVersion
 
 plugins {
     id("com.android.application")
@@ -48,9 +49,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.activity:activity-compose:1.4.0")
-    implementation("com.google.dagger:hilt-android:${Constants.hiltVersion}")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    kapt("com.google.dagger:hilt-compiler:${Constants.hiltVersion}")
+    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
 
     implementation("io.coil-kt:coil-compose:1.4.0")
+    implementation("com.github.a914-gowtham:compose-ratingbar:1.2.3")
+    implementation("androidx.appcompat:appcompat:1.4.1")
 }

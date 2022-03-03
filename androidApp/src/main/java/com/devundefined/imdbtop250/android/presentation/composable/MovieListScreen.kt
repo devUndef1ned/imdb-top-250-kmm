@@ -24,11 +24,11 @@ fun MovieListScreen(viewModel: MovieListViewModel) {
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
+        @Suppress("MoveVariableDeclarationIntoWhen", "UnnecessaryVariable")
         val currentState = state
         when (currentState) {
             is State.Error -> Text(text = "Error occurred!\n${currentState.error.message}")
-            State.Initial -> Text("We are going to load data")
-            State.Loading -> CircularProgressIndicator()
+            State.Initial, State.Loading -> CircularProgressIndicator()
             is State.Success -> MovieList(currentState.data)
         }
     }
