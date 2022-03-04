@@ -39,7 +39,11 @@ struct ContentView: View {
                         })
             })
         case .success(let content):
-            return AnyView(ProgressView())
+            return AnyView(
+                List(content.movies, id: \.self) { movie in
+                    MovieRow(movie: movie)
+                }
+            )
         }
 	}
 }
