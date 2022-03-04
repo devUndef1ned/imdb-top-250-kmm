@@ -10,7 +10,7 @@ kotlin {
     listOf(
         iosX64(),
         iosArm64(),
-        //iosSimulatorArm64() sure all ios dependencies support this target
+        iosSimulatorArm64() //sure all ios dependencies support this target
     ).forEach {
         it.binaries.framework {
             baseName = "networking"
@@ -53,7 +53,7 @@ kotlin {
         }
         val iosX64Main by getting
         val iosArm64Main by getting
-        //val iosSimulatorArm64Main by getting
+        val iosSimulatorArm64Main by getting
         val iosMain by creating {
             dependsOn(commonMain)
             iosX64Main.dependsOn(this)
@@ -61,16 +61,16 @@ kotlin {
             dependencies {
                 implementation("io.ktor:ktor-client-ios:$ktorVersion")
             }
-            //iosSimulatorArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
         }
         val iosX64Test by getting
         val iosArm64Test by getting
-        //val iosSimulatorArm64Test by getting
+        val iosSimulatorArm64Test by getting
         val iosTest by creating {
             dependsOn(commonTest)
             iosX64Test.dependsOn(this)
             iosArm64Test.dependsOn(this)
-            //iosSimulatorArm64Test.dependsOn(this)
+            iosSimulatorArm64Test.dependsOn(this)
             dependencies {
                 implementation("io.ktor:ktor-client-mock:$ktorVersion")
             }
