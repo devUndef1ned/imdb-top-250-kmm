@@ -6,7 +6,7 @@ struct MovieListContentView: View {
 	
     var body: some View {
         var isErrorShown = true
-        func isErrorState() -> Bool {
+        @MainActor func isErrorState() -> Bool {
             switch viewModel.uiState {
             case .error:
                 return true
@@ -24,7 +24,9 @@ struct MovieListContentView: View {
         
         switch viewModel.uiState {
         case .initial:
-            return AnyView(ProgressView())
+            return AnyView(
+                ProgressView().onAppear { viewModel.loadData() }
+            )
         case .loading:
             return AnyView(ProgressView())
         case .error(let coreError):

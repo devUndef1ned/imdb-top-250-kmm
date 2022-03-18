@@ -13,7 +13,7 @@ class ApiClient(){
     private var client: HttpClient
 
     init {
-        client = HttpClient(CIO) {
+        client = HttpClient(engine()) {
             install(ContentNegotiation) {
                 json()
             }

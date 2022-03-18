@@ -60,6 +60,7 @@ kotlin {
             iosArm64Main.dependsOn(this)
             dependencies {
                 implementation("io.ktor:ktor-client-ios:$ktorVersion")
+                implementation("io.ktor:ktor-client-darwin:$ktorVersion")
             }
             iosSimulatorArm64Main.dependsOn(this)
         }
