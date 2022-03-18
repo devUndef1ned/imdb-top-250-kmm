@@ -39,8 +39,7 @@ kapt {
 dependencies {
     val lifecycleVersion = "2.4.1"
 
-    implementation(project(":domain"))
-    implementation(project(":networking"))
+    implementation(project(":sharedFeature"))
 
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.material:material:$composeVersion")

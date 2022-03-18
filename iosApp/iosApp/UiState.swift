@@ -7,18 +7,14 @@
 //
 
 import Foundation
-import domain
+import sharedFeature
 
-typealias CoreError = domain.Error
+typealias CoreError = sharedFeature.DomainError
+typealias Movie = sharedFeature.DomainMovie
 
 enum UiState {
-    
-    struct Content {
-        let movies: [Movie]
-    }
-    
     case initial
     case loading
     case error(CoreError)
-    case success(Content)
+    case success([Movie])
 }

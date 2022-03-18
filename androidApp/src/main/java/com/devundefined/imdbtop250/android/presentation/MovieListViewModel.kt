@@ -3,8 +3,6 @@ package com.devundefined.imdbtop250.android.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devundefined.imdbtop250.domain.Movie250TopRepository
-import com.devundefined.imdbtop250.monad.onLeft
-import com.devundefined.imdbtop250.monad.onRight
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct ContentView: View {
-    @State var uiState: UiState = .initial
+struct MovieListContentView: View {
+    @ObservedObject var viewModel: MovieListViewModel
     
 	
     var body: some View {
         var isErrorShown = true
         func isErrorState() -> Bool {
-            switch uiState {
+            switch viewModel.uiState {
             case .error:
                 return true
             default:
@@ -22,7 +22,7 @@ struct ContentView: View {
             set: { _ in }
         )
         
-        switch uiState {
+        switch viewModel.uiState {
         case .initial:
             return AnyView(ProgressView())
         case .loading:
@@ -31,7 +31,7 @@ struct ContentView: View {
             
             return AnyView(
                 Button("Retry") {
-                    // TODO retry in VM
+                    viewModel.loadData()
                 }
                     .alert(isPresented: isErrorBinding) {
                         Alert(title: Text("Error while fetching data"), message: Text(coreError.message), dismissButton: .cancel {
@@ -40,8 +40,10 @@ struct ContentView: View {
             })
         case .success(let content):
             return AnyView(
-                List(content.movies, id: \.self) { movie in
+                List(content, id: \.self) { movie in
                     MovieRow(movie: movie)
+                }.onAppear {
+                    viewModel.loadData()
                 }
             )
         }
@@ -50,7 +52,8 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
 	static var previews: some View {
-		ContentView(uiState: UiState.error(CoreError.init(message: "Achtung!!!")))
-        ContentView(uiState: .loading)
-	}
+		//ContentView(uiState: UiState.error(CoreError.init(message: "Achtung!!!")))
+        //ContentView(uiState: .loading)
+        AnyView(ProgressView())
+    }
 }

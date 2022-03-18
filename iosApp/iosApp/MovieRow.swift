@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import domain
+import sharedFeature
 import SwiftUI
 
 struct MovieRow: View {
